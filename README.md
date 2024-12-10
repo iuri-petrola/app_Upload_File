@@ -19,4 +19,4 @@ Teste de upload em volume NFS fileStore
     docker run -itd --name apptestvolume --net testvolumes \
     --restart unless-stopped  -p 80:80 \
     --mount type=bind,source=/etc/hosts,target=/etc/hosts \
-    --mount type=bind,source=/mnt/filestore/uploads/,target=/mnt/uploads iuripetrola/apptestvolume:1.1.0
+    --mount type=bind,source=/mnt/filestore/uploads/,target=/mnt/uploads iuripetrola/app_upload_file:1.1.0
