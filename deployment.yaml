@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: app-upload-file
-          image: iuripetrola/app_upload_file:1.1.0
+          image: iuripetrola/app_upload_file
           ports:
           - containerPort: 80
           volumeMounts:

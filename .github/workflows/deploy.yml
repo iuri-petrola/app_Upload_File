@@ -28,3 +28,24 @@ jobs:
           tags: | 
             iuripetrola/app_upload_file:v${{github.run_number}}
             iuripetrola/app_upload_file:latest
+  CD:
+    name: "Processo de CD"
+    runs-on: ubuntu-22.04
+    needs: CI
+    steps:
+      - name: Checkout do Codigo
+        uses: actions/checkout@v4
+      
+      - name: Configuraçao do contexto do kubernetes
+        uses: azure/k8s-set-context@v4
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+
+      - name: Deploy to Kubernetes cluster
+        uses: Azure/k8s-deploy@v5
+        with:
+          manifests: |
+            ./deployment.yaml
+          images: |
+            iuripetrola/app_upload_file:v${{github.run_number}}
