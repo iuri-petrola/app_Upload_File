@@ -1,0 +1,22 @@
+name: Variaveis de ambiente
+
+on:
+  workflow_dispatch: 
+
+env:
+  ENV_WORKFLOW: "Valor Workflow"
+
+jobs:
+  Test-env:
+    runs-on: ubuntu-22.04
+    env:
+      ENV_JOB: "Valor Job Test-env"
+    steps:
+      - name: Execuçao
+        env:
+          ENV_ACTION: "Valor ACTION - Execuçao"
+        run: |
+            echo "$ENV_WORKFLOW"
+            echo "$ENV_JOB"
+            echo "$ENV_ACTION"     
+        

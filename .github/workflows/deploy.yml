@@ -35,7 +35,12 @@ jobs:
     steps:
       - name: Checkout do Codigo
         uses: actions/checkout@v4
-      
+
+      - name: Setup plugin gke-gcloud-auth-plugin
+        run: |
+          sudo apt update -y
+          sudo apt install ffmpeg -y
+
       - name: Configuraçao do contexto do kubernetes
         uses: azure/k8s-set-context@v4
         with:

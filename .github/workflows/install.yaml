@@ -1,0 +1,14 @@
+name: Install FFmpeg
+
+on:
+  workflow_dispatch: 
+
+jobs:
+  install:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: instalaçao do FFMPEG
+        run: |
+            sudo apt update -y
+            sudo apt install ffmpeg -y
+        
