@@ -1,0 +1,17 @@
+name: Workflow Evento de Push
+
+on:
+  push:
+    branches: ["develop", "feature/*" ]
+    paths: 
+      - "/**"
+    tags:
+      - v*
+
+jobs:
+  Evento-Push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Action Workflow Evento de Push
+        run: echo "Teste de Action Workflow Evento de Push"
+  

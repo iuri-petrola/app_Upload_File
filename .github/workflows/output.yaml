@@ -10,22 +10,22 @@ jobs:
             output-generatedpassword: ${{steps.generatedpassword.outputs.password}}      
         steps:
             - name: Gerando output com shell
-                id: exemplo-output
-                run: |
+              id: exemplo-output
+              run: |
                 ACTION_RANDOM=$(( $RANDOM ))
                 echo "action_random=$ACTION_RANDOM" >> GITHUB_OUTPUT
 
             - name: Exibindo o output da action exemplo output
-                run: echo "${{steps.exemplo-output.outputs.action_random}}"
+              run: echo "${{steps.exemplo-output.outputs.action_random}}"
 
             - name: Gerador de senha
-                id: generatedpassword
-                uses: aamirmirza/RandomPasswordGenerator@v1.1
-                with:
+              id: generatedpassword
+              uses: aamirmirza/RandomPasswordGenerator@v1.1
+              with:
                 length: 15
                 
             - name: Exibindo o output da action de password
-                run: echo ${{steps.generatedpassword.outputs.password}}
+              run: echo ${{steps.generatedpassword.outputs.password}}
 
     exibindo_valores:
         needs: [gerando_output]
