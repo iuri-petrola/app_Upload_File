@@ -1,0 +1,13 @@
+name: Workflow Evento de Pull Request
+
+on:
+  pull_request:
+    branches: ["main" ]
+
+jobs:
+  Evento-Push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Action Workflow Evento de Push
+        run: echo "Teste de Action Workflow Evento de Pull Request"
+  
