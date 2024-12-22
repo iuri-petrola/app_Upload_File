@@ -14,7 +14,7 @@ on:
         default: true
 
 jobs:
-  Funçoes:
+  Funcoes:
     runs-on: ubuntu-latest
     steps:
       - name: Função contains
