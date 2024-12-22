@@ -1,0 +1,27 @@
+name: Workflow Evento de Funçoes
+
+on:
+  workflow_dispatch: 
+    inputs:
+      valor_numerico:
+        type: number
+        default: 20
+      valor_string:
+        type: string
+        default: "valor XPTO"
+      valor_boolean:
+        type: boolean
+        default: true
+
+jobs:
+  Funçoes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Função contains
+        run: echo "${{contains(inputs.valor_string, github.actor)}}
+      
+      - name: Funçao Format
+        run: "echo ${{format('formato string: {0} - formato number: {1} - formato boolean: {2}', inputs.valor_string, inputs.valor_numerico, inputs.valor_boolean) }}"
+
+      - name: Função Json
+        run: echo "${{toJson(github)}}"
