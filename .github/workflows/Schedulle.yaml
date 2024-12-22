@@ -1,4 +1,4 @@
-name: Workflow Evento de Pull Request
+name: Workflow Evento de Schedulle
 
 on:
   schedule:
