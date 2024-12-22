@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Função contains
-        run: echo "${{contains(inputs.valor_string, github.actor)}}
+        run: echo "${{contains(inputs.valor_string, github.actor)}}"
       
       - name: Funçao Format
         run: "echo ${{format('formato string: {0} - formato number: {1} - formato boolean: {2}', inputs.valor_string, inputs.valor_numerico, inputs.valor_boolean) }}"
