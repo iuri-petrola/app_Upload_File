@@ -1,0 +1,28 @@
+name: Workflow Evento de Pull Request
+
+on:
+  workflow_dispatch: 
+    inputs:
+      valor_numerico:
+        type: number
+        default: 20
+      valor_string:
+        type: string
+        default: "valor XPTO"
+      valor_boolean:
+        type: boolean
+        default: true
+
+jobs:
+  Operadores:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Operaçao com string
+        run: echo "${{github.actor == inputs.valor_string}}"
+      
+      - name: Operaçao com number
+        run:  echo "${{inputs.valor_numerico > 20}}"
+      
+      - name: Operaçao com boolean
+        run: echo "${{!inputs.valor_boolean}}"
+  

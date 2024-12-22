@@ -1,0 +1,13 @@
+name: Workflow Evento de Pull Request
+
+on:
+  schedule:
+    - cron:  "0 12 * * *"
+
+jobs:
+  Evento-Schedulle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Action Workflow Evento de Schedulle
+        run: echo "Teste de Action Workflow Evento de Schedulle"
+  

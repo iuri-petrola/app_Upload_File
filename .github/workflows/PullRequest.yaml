@@ -6,9 +6,9 @@ on:
     types: closed
 
 jobs:
-  Evento-Push:
+  Evento-PullRequest:
     runs-on: ubuntu-latest
     steps:
-      - name: Action Workflow Evento de Push
+      - name: Action Workflow Evento de Pull Request
         run: echo "Teste de Action Workflow Evento de Pull Request"
   
