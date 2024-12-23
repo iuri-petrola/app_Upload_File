@@ -15,7 +15,7 @@ on:
 
 jobs:
   Funcoes:
-    runs-on: ubuntu-latest
+    runs-on: [direto-server-aplicacao-runner-01]
     steps:
       - name: Função contains
         run: echo "${{contains(inputs.valor_string, github.actor)}}"
