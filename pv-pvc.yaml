@@ -13,4 +13,16 @@ spec:
     server: 10.48.82.2
     path: /consultoria/uploads
 
+---
 
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: consultoria-pvc-upload-files
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: sc-consultoria
+  resources:
+    requests:
+      storage: 1Ti
