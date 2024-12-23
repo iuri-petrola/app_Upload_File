@@ -2,6 +2,8 @@ name: Workflow evento controle execuçao
 
 on:
   push:
+    branches: [develop]
+  workflow_dispatch: 
 
 jobs:
   apenas-main:
@@ -28,7 +30,7 @@ jobs:
         run: echo "Executando em main"
       
       - name: execuçao em Todos
-        run: ech "Executando em Todos"
+        run: echo "Executando em Todos"
 
       - name: Envio de status
         if: ${{ failure() }}
