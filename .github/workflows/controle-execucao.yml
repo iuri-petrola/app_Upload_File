@@ -1,0 +1,36 @@
+name: Workflow evento controle execuçao
+
+on:
+  push:
+
+jobs:
+  apenas-main:
+    if: ${{github.ref == 'refs/heads/main'}}
+    name: "Esse job so executa na main"
+    runs-on: ubuntu-latest
+    steps:
+      - name: executando na main
+        run: echo "executando comando na main"
+
+  todos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: execuçao em feature
+        if: ${{ contains(github.ref, 'refs/heads/feature') }}
+        run: echo "Executando em feature"
+  
+      - name: execuçao em Hotfix
+        if: ${{ contains(github.ref, 'refs/heads/hotfix') }}
+        run: echo "Executando em hotfix"
+      
+      - name: execuçao em Main
+        if: ${{ github.ref == 'refs/heads/main' }}
+        run: echo "Executando em main"
+      
+      - name: execuçao em Todos
+        run: ech "Executando em Todos"
+
+      - name: Envio de status
+        if: ${{ failure() }}
+        run: echo "envio de error"
+
