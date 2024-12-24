@@ -2,16 +2,16 @@ name: Workflow call
 
 on: 
     workflow_dispatch:
-      inputs:
-        ambiente:
-          type: choice
-          default: "desenvolvimento"
-          required: true
-          description: "Ambiende do deploy"
-          options:
-            - desenvolvimento
-            - homologacao
-            - producao
+      #inputs:
+      #  ambiente:
+      #    type: choice
+      #    default: "desenvolvimento"
+      #    required: true
+      #    description: "Ambiende do deploy"
+      #    options:
+      #      - desenvolvimento
+      #      - homologacao
+      #      - producao
 
 jobs:
     CI:
@@ -27,5 +27,5 @@ jobs:
     CD:
       needs: [CI]
       uses: iuri-petrola/app_Upload_File/.github/workflows/workflow-call-CD.yaml@main
-      with:
-        ambiente: ${{inputs.ambiente}}
+      secrets: 
+        ambiente: ${{ secrets.AMBIENTE}}

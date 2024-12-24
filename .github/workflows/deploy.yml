@@ -3,12 +3,14 @@ name: Deploy Application UploadFile
 on:
   push:
     branches: [develop]
-  workflow_dispatch: 
+  workflow_dispatch:
 
 jobs:
   CI:
     name: "Processo de CI"
     runs-on: [direto-server-aplicacao-runner-01]
+    env:
+        DBPASSWORD: ${{ secrets.DBPASSWORD }}
     steps:
       - name: Checkout do Codigo
         uses: actions/checkout@v4
