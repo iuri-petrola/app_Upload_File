@@ -27,5 +27,8 @@ jobs:
     CD:
       needs: [CI]
       uses: iuri-petrola/app_Upload_File/.github/workflows/workflow-call-CD.yaml@main
-      secrets: 
-        ambiente: ${{ secrets.AMBIENTE}}
+      # secret por herança
+      secrets: inherit
+
+      #secrets: 
+      #  ambiente: ${{ secrets.AMBIENTE}}
