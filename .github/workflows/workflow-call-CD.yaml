@@ -1,11 +1,17 @@
 name: Workflow call-CD
 
 on: 
-    workflow_call:   
+    workflow_call:
+      inputs:
+        ambiente:
+          type: string
+          default: "desenvolvimento"
+          required: true
+          description: "Ambiende do deploy" 
 
 jobs:
     deploy-kubernetes:
       runs-on: ubuntu-latest
       steps:
         - name: Deploy no ambiente
-          run: echo "Executando o deploy no ambiente de desenvolvimento"
+          run: echo "Executando o deploy no ambiente de ${{inputs.ambiente}}"
