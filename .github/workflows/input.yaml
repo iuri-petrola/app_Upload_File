@@ -28,12 +28,13 @@ jobs:
     valores_input:
         runs-on: ubuntu-latest
         steps:
-            - name: Exibindo o contexto do input completo 
-              run: echo ${{toJson(inputs)}}
-            - name: Exibindo os valores individualmente
-              run: |
-                echo "Esses sao os valores passados no inputs"
-                echo "A versao e: ${{inputs.versao}}" 
-                echo "A card e: ${{inputs.numero_card}}" 
-                echo "Deve fazer deploy: ${{inputs.fazer_deploy}}" 
-                echo "O Ambiente e: ${{inputs.ambiente}}" 
+          - name: Exibindo o contexto do input completo 
+            run: echo ${{toJson(inputs)}}
+            
+          - name: Exibindo os valores individualmente
+            run: |
+              echo "Esses sao os valores passados no inputs"
+              echo "A versao e: ${{inputs.versao}}" 
+              echo "O card e: ${{inputs.numero_card}}" 
+              echo "Deve fazer deploy: ${{inputs.fazer_deploy}}" 
+              echo "O Ambiente e: ${{inputs.ambiente}}" 
