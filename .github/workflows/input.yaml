@@ -12,7 +12,7 @@ on:
                 type: number
                 required: true
                 description: "Numero do card da tarefa"
-            fazer deploy:
+            fazer_deploy:
                 type: boolean
                 required: true
                 description: "Especifica se deve ou nao fazer deploy"
@@ -35,5 +35,5 @@ jobs:
                 echo "Esses sao os valores passados no inputs"
                 echo "A versao e: ${{inputs.versao}}" 
                 echo "A card e: ${{inputs.numero_card}}" 
-                echo "Deve fazer deploy: ${{inputs.fazer deploy}}" 
+                echo "Deve fazer deploy: ${{inputs.fazer_deploy}}" 
                 echo "O Ambiente e: ${{inputs.ambiente}}" 

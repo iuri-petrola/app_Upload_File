@@ -3,12 +3,28 @@ run-name: Workflow concorrencia ${{github.run_number}}
 
 on:
   workflow_dispatch: 
+    inputs:
+      chave:
+        type: string
+        default: teste-concorrencia
 
 jobs:
   concorrencia-01:
     runs-on: ubuntu-latest
+    concurrency: 
+      group: ${{inputs.chave}}
+      cancel-in-progress: true
     steps:
       - name: Execuçao de job concorrencia
         run: |
           sleep 120;
           echo "Action executada job 01"
+
+  concorrencia-02:
+    runs-on: ubuntu-latest
+    needs: [concorrencia-01]
+    steps:
+      - name: Execuçao de job concorrencia
+        run: |
+          sleep 120;
+          echo "Action executada job 02"
