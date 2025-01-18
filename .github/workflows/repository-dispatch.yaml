@@ -1,0 +1,15 @@
+name: Workflow call-CD
+
+on: 
+  repository_dispatch:
+    types:
+      - deploy-remoto
+
+jobs:
+    deploy-kubernetes:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Deploy no ambiente
+          run: echo "Executando o deploy no ambiente de ${{github.event.client_payload.ambiente}}"
+        - name: Curl no ambiente
+          run: "curl -X POST https://webhook.site/1105f454-532a-4232-a03b-d906038f80b3 -d '{ ambiente: ${{github.event.client_payload.ambiente}}}' "
