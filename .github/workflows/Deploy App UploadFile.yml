@@ -1,39 +1,21 @@
 name: Deploy App UploadFile
 
 on:
-  push:
-    branches: [develop]
-  workflow_dispatch:
+  workflow_call:
+    inputs:
+      manifests:
+        type: string
+        required: true
+        description: "Arquivos de manifestos para deploy"
+      images:
+        type: string
+        required: true
+        description: "images usadas para deploy"        
 
 jobs:
-  CI:
-    name: "Processo de CI"
-    runs-on: [direto-server-aplicacao-runner-01]
-    env:
-        DBPASSWORD: ${{ secrets.DBPASSWORD }}
-    steps:
-      - name: Checkout do Codigo
-        uses: actions/checkout@v4
-        
-      - name: Login Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: Build e Push da imagem para docker hub
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: ./dockerfile
-          push: true
-          tags: | 
-            iuripetrola/app_upload_file:v${{github.run_number}}
-            iuripetrola/app_upload_file:latest
-  CD:
+  Deploy:
     name: "Processo de CD"
     runs-on: [direto-server-aplicacao-runner-01]
-    needs: CI
     steps:
       - name: Checkout do Codigo
         uses: actions/checkout@v4
@@ -47,7 +29,5 @@ jobs:
       - name: Deploy to Kubernetes cluster
         uses: Azure/k8s-deploy@v5
         with:
-          manifests: |
-            ./deployment.yaml
-          images: |
-            iuripetrola/app_upload_file:v${{github.run_number}}
+          manifests: ${{inputs.manifests}}
+          images: ${{inputs.images}}
