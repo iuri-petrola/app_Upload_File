@@ -9,8 +9,8 @@ jobs:
   CI:
     name: "Processo de CI"
     runs-on: [direto-server-aplicacao-runner-01]
-    #env:
-    #    DBPASSWORD: ${{ secrets.DBPASSWORD }}
+    env:
+        DBPASSWORD: ${{ secrets.DBPASSWORD }}
     steps:
       - name: Checkout do Codigo
         uses: actions/checkout@v4
@@ -32,10 +32,11 @@ jobs:
             iuripetrola/app_upload_file:latest
   CD:
     name: "Processo de CD"
-    runs-on: [direto-server-aplicacao-runner-01]
     needs: [CI]
     uses: iuri-petrola/app_Upload_File/.github/workflows/Deploy App UploadFile.yml@main
     with:
-      manifests: deployment.yaml
-      images: iuripetrola/app_upload_file:v${{github.run_number}}
+      manifests: |
+        ./deployment.yaml
+      images: |
+        iuripetrola/app_upload_file:v${{github.run_number}}
     secrets: inherit
