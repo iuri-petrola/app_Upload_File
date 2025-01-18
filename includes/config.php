@@ -20,7 +20,7 @@ try {
 $host = '104.154.175.19'; // Servidor do banco de dados
 $dbname = 'upload_app'; // Nome do banco de dados
 $user = 'postgres'; // Usuário do banco de dados
-$password = getenv('DBPASSWORD'); // Senha do banco de dados
+$password = 'P0stgr3s4dm1n|2o23'; // Senha do banco de dados
 
 try {
     // Conexão com o PostgreSQL
