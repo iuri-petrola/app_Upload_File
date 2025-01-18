@@ -1,4 +1,4 @@
-name: Deploy Application UploadFile
+name: Deploy App UploadFile
 
 on:
   push:
