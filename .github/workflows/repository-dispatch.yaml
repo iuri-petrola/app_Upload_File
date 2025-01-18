@@ -1,4 +1,4 @@
-name: Workflow call-CD
+name: Workflow repository_dispatch
 
 on: 
   repository_dispatch:
