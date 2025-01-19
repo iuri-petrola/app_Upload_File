@@ -10,24 +10,30 @@ on:
       images:
         type: string
         required: true
-        description: "images usadas para deploy"        
+        description: "images usadas para deploy"
+      environment:
+        type: string
+        required: true
+        description: "Nome do ambiente"           
 
 jobs:
   Deploy:
-    name: "Processo de CD"
+    name: "Deploy no kubernetes direto tech"
     runs-on: [direto-server-aplicacao-runner-01]
+    environment: ${{inputs.environment}}
     steps:
       - name: Checkout do Codigo
         uses: actions/checkout@v4
 
-      #- name: Configuraçao do contexto do kubernetes
-      #  uses: azure/k8s-set-context@v4
-      #  with:
-      #    method: kubeconfig
-      #    kubeconfig: ${{ secrets.KUBE_CONFIG }}
+      - name: Configuraçao do contexto do kubernetes
+        uses: azure/k8s-set-context@v4
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
 
       - name: Deploy to Kubernetes cluster
         uses: Azure/k8s-deploy@v5
         with:
           manifests: ${{inputs.manifests}}
           images: ${{inputs.images}}
+          namespace: ${{vars.APP_NAMESPACE}}
