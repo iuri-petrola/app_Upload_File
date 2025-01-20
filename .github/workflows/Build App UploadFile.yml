@@ -28,7 +28,7 @@ jobs:
           tags: | 
             iuripetrola/app_upload_file:v${{github.run_number}}
             iuripetrola/app_upload_file:latest
-  CD-homolog:
+  Deploy-homolog:
     needs: [CI]
     uses: iuri-petrola/app_Upload_File/.github/workflows/Deploy App UploadFile.yml@main
     with:
@@ -39,7 +39,7 @@ jobs:
       environment: homologacao
     secrets: inherit
   
-  CD-producao:
+  Deploy-producao:
     needs: [CI]
     uses: iuri-petrola/app_Upload_File/.github/workflows/Deploy App UploadFile.yml@main
     with:

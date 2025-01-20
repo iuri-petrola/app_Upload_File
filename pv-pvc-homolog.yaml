@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: consultoria-pv-upload-files-homolog
+  namespace: homologacao
+spec:
+  capacity:
+    storage: 1Ti
+  accessModes:
+    - ReadWriteOnce
+  #persistentVolumeReclaimPolicy: Delete
+  storageClassName: sc-consultoria
+  nfs:
+    server: 10.48.82.2
+    path: /consultoria/uploads/homolog
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: consultoria-pvc-upload-files-homolog
+  namespace: homologacao
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: sc-consultoria
+  resources:
+    requests:
+      storage: 1Ti
