@@ -1,4 +1,4 @@
-name: Deploy App UploadFile
+name: Deploy App kubernetes
 
 on:
   workflow_call:
@@ -14,11 +14,11 @@ on:
       environment:
         type: string
         required: true
-        description: "Nome do ambiente"           
+        description: "Nome do ambiente para deploy"           
 
 jobs:
   Deploy:
-    name: "Deploy no kubernetes direto tech"
+    name: "Deploy no kubernetes"
     runs-on: [direto-server-aplicacao-runner-01]
     environment: ${{inputs.environment}}
     steps:

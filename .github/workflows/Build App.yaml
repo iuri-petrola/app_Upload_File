@@ -1,4 +1,4 @@
-name: Build App UploadFile
+name: Build App
 
 on:
   push:
@@ -30,10 +30,10 @@ jobs:
             iuripetrola/app_upload_file:latest
   Deploy-homolog:
     needs: [CI]
-    uses: iuri-petrola/app_Upload_File/.github/workflows/Deploy App UploadFile.yml@main
+    uses: iuri-petrola/app_Upload_File/.github/workflows/Deploy App kubernetes.yaml@main
     with:
       manifests: |
-        ./deployment.yaml
+        ./deployment-homolog.yaml
       images: |
         iuripetrola/app_upload_file:v${{github.run_number}}
       environment: homologacao
@@ -41,10 +41,10 @@ jobs:
   
   Deploy-producao:
     needs: [CI]
-    uses: iuri-petrola/app_Upload_File/.github/workflows/Deploy App UploadFile.yml@main
+    uses: iuri-petrola/app_Upload_File/.github/workflows/Deploy App kubernetes.yaml@main
     with:
       manifests: |
-        ./deployment.yaml
+        ./deployment-producao.yaml
       images: |
         iuripetrola/app_upload_file:v${{github.run_number}}
       environment: producao
