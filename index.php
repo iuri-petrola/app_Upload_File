@@ -33,6 +33,11 @@ $stmt = $pdo->query("SELECT * FROM arquivos");
 $arquivos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
+<?php
+print_r($_ENV);
+print_r($_SERVER);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
