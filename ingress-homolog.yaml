@@ -1,0 +1,20 @@
+  apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    name: ingress-homolog
+    namespace: homologacao
+    annotations: 
+      nginx.ingress.kubernetes.io/rewrite-target: / #reescrever url caso app nao tenha o endpoint definido no path
+  spec:
+    ingressClassName: nginx
+    rules:
+    - host: homolog.ip-devops.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: app-upload-file-homolog
+                port: 
+                  number: 80

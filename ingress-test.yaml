@@ -1,0 +1,37 @@
+  apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    name: ingress-test
+    namespace: test
+    annotations: 
+      nginx.ingress.kubernetes.io/rewrite-target: / #reescrever url caso app nao tenha o endpoint definido no path
+  spec:
+    ingressClassName: nginx
+    rules:
+    #- host: ip-devops.com
+    #  http:
+    #    paths:
+    #      - pathType: Prefix
+    #        path: /test
+    #        backend:
+    #          service:
+    #            name: app-upload-file-test
+    #            port: 
+    #              number: 80
+    #      - pathType: Prefix
+    #        path: /homolog
+    #        backend:
+    #          service:
+    #            name: app-upload-file-homolog
+    #            port: 
+    #              number: 80
+    - host: test.ip-devops.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: app-upload-file-test
+                port: 
+                  number: 80
