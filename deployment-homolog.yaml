@@ -29,7 +29,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: app-upload-file
+  name: app-upload-file-homolog
   namespace: homologacao
 spec:
   selector: 
