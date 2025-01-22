@@ -34,8 +34,7 @@ $arquivos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <?php
-print_r($_ENV);
-print_r($_SERVER);
+print_r(getenv());
 ?>
 
 <!DOCTYPE html>
