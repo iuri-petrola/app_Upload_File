@@ -32,7 +32,7 @@ jobs:
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
       
       - name: Definir variáveis de conexao com banco
-        run: echo "DEPLOY_ENV=production" >> $GITHUB_ENV
+        run: echo "DB_PASS=${{secrets.DB_PASSWORD}}" >> $GITHUB_ENV
 
       - name: Deploy to Kubernetes cluster
         uses: Azure/k8s-deploy@v5
@@ -40,3 +40,5 @@ jobs:
           manifests: ${{inputs.manifests}}
           images: ${{inputs.images}}
           namespace: ${{vars.APP_NAMESPACE}}
+        env:
+          DB_PASS: ${{ env.DB_PASS }}
