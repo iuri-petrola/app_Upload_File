@@ -2,6 +2,7 @@
   kind: Ingress
   metadata:
     name: ingress-dominio
+    namespace: test
     annotations: 
       nginx.ingress.kubernetes.io/rewrite-target: / #reescrever url caso app nao tenha o endpoint definido no path
   spec:
