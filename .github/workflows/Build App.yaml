@@ -28,6 +28,18 @@ jobs:
           tags: | 
             iuripetrola/app_upload_file:v${{github.run_number}}
             iuripetrola/app_upload_file:latest
+  
+  Deploy-test:
+    needs: [CI]
+    uses: iuri-petrola/app_Upload_File/.github/workflows/Deploy App kubernetes.yaml@main
+    with:
+      manifests: |
+        ./deployment-test.yaml
+      images: |
+        iuripetrola/app_upload_file:v${{github.run_number}}
+      environment: test
+    secrets: inherit
+
   Deploy-homolog:
     needs: [CI]
     uses: iuri-petrola/app_Upload_File/.github/workflows/Deploy App kubernetes.yaml@main

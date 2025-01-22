@@ -30,6 +30,9 @@ jobs:
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
+      
+      - name: Definir variáveis de conexao com banco
+        run: echo "DEPLOY_ENV=production" >> $GITHUB_ENV
 
       - name: Deploy to Kubernetes cluster
         uses: Azure/k8s-deploy@v5

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: consultoria-pv-upload-files
+  name: consultoria-pv-upload-files-test
 spec:
   capacity:
     storage: 1Ti
@@ -11,14 +11,14 @@ spec:
   storageClassName: sc-consultoria
   nfs:
     server: 10.48.82.2
-    path: /consultoria/uploads
+    path: /consultoria/uploads/test
 
 ---
 
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: consultoria-pvc-upload-files
+  name: consultoria-pvc-upload-files-test
 spec:
   accessModes:
     - ReadWriteOnce

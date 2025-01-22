@@ -22,7 +22,7 @@ spec:
       volumes:
         - name: vol-upload-file
           persistentVolumeClaim: 
-            claimName: consultoria-pvc-upload-files
+            claimName: consultoria-pvc-upload-files-test
 
 ---
 apiVersion: v1
