@@ -35,7 +35,7 @@ jobs:
         run: echo "DB_PASS=${{secrets.DB_PASSWORD}}" >> $GITHUB_ENV
 
       - name: Verificar variável no ambiente
-        run: "echo DB_PASS é: $DB_PASS"
+        run: "echo DB_PASS é: ${{secrets.DB_PASSWORD}}"
         env:
           DB_PASS: ${{ env.DB_PASS }}
 
