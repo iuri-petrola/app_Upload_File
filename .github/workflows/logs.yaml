@@ -1,0 +1,22 @@
+name: logs
+
+on: 
+    workflow_dispatch:
+
+jobs:
+  build_logs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Adicionando mensagens de log
+        run: |
+          echo "::debug:: Log Debug"
+          echo "::warning:: Log warning"
+          echo "::notice:: Log notice"
+          echo "::error:: Log error"
+          
+      - name: Adicionando log agrupados
+        run: |
+          echo "::group:: Grupo de logs"
+          echo "Informação XPTO 1"
+          echo "Esse workflow foi executado por ${{github.actor}}"
+          echo "::endgroup::"
