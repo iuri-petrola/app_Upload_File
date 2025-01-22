@@ -33,10 +33,6 @@ $stmt = $pdo->query("SELECT * FROM arquivos");
 $arquivos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<?php
-print_r(getenv());
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -47,7 +43,7 @@ print_r(getenv());
 </head>
 <body>
 <div class="container">
-    <h1>Upload de Arquivos-test</h1>
+    <h1>Upload de Arquivos</h1>
 
     <?php if (isset($mensagem)) : ?>
         <p><?= htmlspecialchars($mensagem); ?></p>
